@@ -1,0 +1,32 @@
+<h1>Available flighs</h1>
+
+<h2>Search</h2>
+
+<%= form_tag flights_path, method: :get, style: "display: flex; gap: 10px;" do %>
+  <div>
+    <%= label_tag :departure_airport %>
+    <%= select_tag(:departure_airport, options_from_collection_for_select(Airport.all, :code, :code)) %>
+  </div>
+
+  <div>
+    <%= label_tag :arrival_airport %>
+    <%= select_tag(:arrival_airport, options_from_collection_for_select(Airport.all, :code, :code)) %>
+  </div>
+
+  <div>
+    <%= label_tag :passengers %>
+    <%= select_tag :passengers, options_for_select((1..4).to_a) %>
+  </div>
+
+  <div>
+    <%= label_tag :date %>
+    <%= select_tag :date, options_for_select(Flight.days) %>
+  </div>
+
+  <div>
+    <%= submit_tag "Search"%>
+  </div>
+<% end %>
+
+
+<h2>Result</h2>
