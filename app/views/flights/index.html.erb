@@ -31,10 +31,4 @@
 
 <h2>Result</h2>
 
-<% @flights.includes(:departure_airport, :arrival_airport).each do |flight| %>
-  <hr>
-  <p>From: <%= flight.departure_airport.code %></p>
-  <p>To: <%= flight.arrival_airport.code %></p>
-  <p>Departing at: <%= flight.start.strftime "%Y-%m-%d, %H:%M" %></p>
-  <p>Duration: <%= flight.duration %></p>
-<% end %>
+<%= render(partial: "flight_cards", collection: @flights, as: :flight) %>
