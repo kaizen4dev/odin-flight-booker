@@ -1,6 +1,6 @@
 class FlightsController < ApplicationController
   def index
-    @flights = Flight.all.where(airports())
+    @flights = Flight.all.where(airports()).includes(:departure_airport, :arrival_airport)
   end
 
   private
