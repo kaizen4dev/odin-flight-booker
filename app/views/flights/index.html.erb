@@ -30,5 +30,12 @@
 
 
 <h2>Result</h2>
+<% unless params[:date].nil? %>
+  <h3>Flights on <%= params[:date] %></h3>
+  <%= render(partial: "flight_cards", collection: @flights.where("start LIKE ?", params[:date] + "%"), as: :flight) ||
+    render(inline: "<p>There are no flights on this day.</p>") %>
 
-<%= render(partial: "flight_cards", collection: @flights, as: :flight) %>
+  <h3>Flights on other days</h3
+<% end %>
+<%= render(partial: "flight_cards", collection: @flights, as: :flight) ||
+  render(inline: "<p>There are no flights between chosen airports.</p>") %>
