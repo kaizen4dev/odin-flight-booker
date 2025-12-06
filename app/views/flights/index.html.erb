@@ -5,12 +5,12 @@
 <%= form_tag flights_path, method: :get, style: "display: flex; gap: 10px;" do %>
   <div>
     <%= label_tag :departure_airport %>
-    <%= select_tag(:departure_airport, options_from_collection_for_select(Airport.all, :code, :code)) %>
+    <%= select_tag(:departure_airport, options_from_collection_for_select(Airport.all, :id, :code)) %>
   </div>
 
   <div>
     <%= label_tag :arrival_airport %>
-    <%= select_tag(:arrival_airport, options_from_collection_for_select(Airport.all, :code, :code)) %>
+    <%= select_tag(:arrival_airport, options_from_collection_for_select(Airport.all, :id, :code)) %>
   </div>
 
   <div>
