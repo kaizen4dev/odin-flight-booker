@@ -1,0 +1,5 @@
+<hr>
+<p>From: <%= flight.departure_airport.code %></p>
+<p>To: <%= flight.arrival_airport.code %></p>
+<p>Departing at: <%= flight.start.strftime "%Y-%m-%d, %H:%M" %></p>
+<p>Duration: <%= flight.duration %></p>
