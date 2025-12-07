@@ -3,3 +3,8 @@
 <p>To: <%= flight.arrival_airport.code %></p>
 <p>Departing at: <%= flight.start.strftime "%Y-%m-%d, %H:%M" %></p>
 <p>Duration: <%= flight.duration %></p>
+<%= form_tag new_booking_path, method: :get do%>
+  <%= number_field_tag :flight_id, flight.id, hidden: true %>
+  <%= number_field_tag :passengers, params[:passengers], hidden: true%>
+  <%= submit_tag "Book" %>
+<% end %>
