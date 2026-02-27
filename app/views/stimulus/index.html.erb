@@ -1,0 +1,49 @@
+<h1>Stimulus test</h1>
+
+<div data-controller="hello"></div>
+
+<div class="toggles" style="display: flex; flex-direction: column; gap: 10px; padding: 10px;">
+  <style>
+    .toggles > * {
+      border: solid gray;
+    }
+    h2 {
+      border: none !important;
+    }
+  </style>
+
+  <h2>All the toggles</h2>
+
+  <div data-controller="toggle">
+    <button data-action="toggle#box">Hide the box</button>
+    <div data-toggle-target="box" style="background-color: red; width: 200px; height: 200px;"></div>
+  </div>
+
+  <div data-controller="toggle">
+    <button data-action="toggle#box">Toggle</button>
+    <select data-toggle-target="box" data-action="toggle#text"  hidden>
+      <option>Click me!</option>
+      <option>Click me!</option>
+      <option>Click me!</option>
+      <option>Click me!</option>
+    </select>
+    <p data-toggle-target="text" hidden>Hi there!</p>
+  </div>
+
+  <style>
+    .box-highlight {
+      border: solid yellow;
+    }
+  </style>
+
+  <div data-controller="toggle" data-toggle-highlight-class="box-highlight">
+    <input type="checkbox" data-action="toggle#highlight" id="input">
+    <label for="input">Checkbox</label>
+  </div>
+
+  <div data-controller="toggle">
+    <p data-toggle-target="warning" style="color: red;" hidden>Username can't be longer than 10 characters!</p>
+    <label for="input">Username</label>
+    <input data-toggle-target="input" data-action="toggle#input" id="input">
+  </div>
+</div>
