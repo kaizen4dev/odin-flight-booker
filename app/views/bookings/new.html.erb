@@ -7,16 +7,23 @@
   <p>Date: <%= flight.start.strftime("%Y-%m-%d, %H:%M") %> </p>
   <p>Duration: <%= flight.duration %> </p>
   <p>Passengers:</p>
+  <div data-controller="passengers">
   <%= f.fields_for :passengers do |p|%>
-    <div>
-      <%= p.label :name %>
-      <%= p.text_field :name %>
+    <div data-controller="passenger-inputs">
+      <div>
+        <%= p.label :name %>
+        <%= p.text_field :name %>
+      </div>
+      <div>
+        <%= p.label :email %>
+        <%= p.email_field :email %>
+      </div>
+      <%= button_tag "Remove Passenger", type: "button", "data-action": "passenger-inputs#remove"%>
+      <hr>
     </div>
-    <div>
-      <%= p.label :email %>
-      <%= p.email_field :email %>
-    </div>
-    <hr>
   <% end %>
+
+  <%= button_tag "Add Passenger", type: "button", "data-action": "passengers#new"%>
+  </div>
   <%= f.submit %>
 <% end %>
