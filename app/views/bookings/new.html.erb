@@ -9,7 +9,7 @@
   <p>Passengers:</p>
   <div data-controller="passengers">
   <%= f.fields_for :passengers do |p|%>
-    <div data-controller="passenger-inputs">
+    <div data-controller="passenger-inputs" data-passenger-inputs-index-value="<%= p.index %>">
       <div>
         <%= p.label :name %>
         <%= p.text_field :name %>
@@ -18,12 +18,28 @@
         <%= p.label :email %>
         <%= p.email_field :email %>
       </div>
-      <%= button_tag "Remove Passenger", type: "button", "data-action": "passenger-inputs#remove"%>
+      <%= button_tag "Remove Passenger", type: "button", "data-action": "passenger-inputs#removed"%>
       <hr>
     </div>
   <% end %>
-
-  <%= button_tag "Add Passenger", type: "button", "data-action": "passengers#new"%>
   </div>
   <%= f.submit %>
 <% end %>
+
+<template id="add-passenger-button-template">
+  <button name="button" type="button" data-action="passenger-inputs#added">Add Passenger</button>
+  <hr>
+</template>
+
+<template id="passenger-inputs-template">
+  <div>
+    <label data-passenger-inputs-target="nameLabel">Name</label>
+    <input type="text" data-passenger-inputs-target="nameInput">
+  </div>
+  <div>
+    <label data-passenger-inputs-target="emailLabel">Email</label>
+    <input type="email" data-passenger-inputs-target="emailInput">
+  </div>
+  <button name="button" type="button" data-action="passenger-inputs#removed">Remove Passenger</button>
+  <hr>
+</template>
